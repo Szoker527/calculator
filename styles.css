@@ -1,0 +1,77 @@
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#display {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 100px;
+}
+
+#display-input,
+#display-show {
+    flex: 1;
+}
+
+#display-input input {
+    flex: 1;
+}
+
+#container {
+    display: flex;
+    width: 400px;
+    height: 400px;
+    flex-direction: column;
+}
+
+#top-side,
+#bottom-side,
+#rightBox,
+#btnBox,
+#rightBox,
+#display-input,
+#rightBox div,
+#bottom-side div,
+#btnBox div  {
+    display: flex;
+    flex: 1;
+}
+
+#top-side {
+    flex: 3;
+}
+
+
+#btnBox {
+    flex-direction: column;
+    flex: 3;
+}
+
+#rightBox {
+    flex-direction: column;
+}
+
+.roundbtn {
+    padding: 5px;
+}
+
+.roundBorder {
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+button {
+    flex: 1;
+}
+
+#bottom-side #zerobtn {
+    flex: 3;
+}
