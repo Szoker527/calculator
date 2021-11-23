@@ -14,6 +14,7 @@ body {
     flex-direction: column;
     width: 400px;
     height: 100px;
+    border: solid;
 }
 
 #display-input,
@@ -23,6 +24,24 @@ body {
 
 #display-input input {
     flex: 1;
+    border: none;
+    background-color: #979ba0;
+    resize: none;
+    outline: none;
+}
+
+#operators {
+    display: flex;
+    width: 400px;
+    height: 100px;
+    border: solid;
+    border-top: none;
+    border-bottom: none;
+    background-color: #1F2937;
+}
+
+#operators div {
+    padding: 18px 6px;
 }
 
 #container {
@@ -30,6 +49,9 @@ body {
     width: 400px;
     height: 400px;
     flex-direction: column;
+    border: solid;
+    border-top: none;
+    background-color: #1F2937;
 }
 
 #top-side,
@@ -39,6 +61,7 @@ body {
 #rightBox,
 #display-input,
 #rightBox div,
+#operators div,
 #bottom-side div,
 #btnBox div  {
     display: flex;
@@ -59,19 +82,30 @@ body {
     flex-direction: column;
 }
 
-.roundbtn {
-    padding: 5px;
+#btnBox div {
+    padding: 15px;
+}
+
+#rightBox div {
+    padding: 15px;
 }
 
 .roundBorder {
-    border: 2px solid black;
-    border-radius: 50%;
+    margin: 3px;
 }
 
 button {
+    background-color:  #f9faf8;
+    border: 2px solid black;
     flex: 1;
 }
 
+button:hover {
+    border-color: #3882F6;
+}
+
+
 #bottom-side #zerobtn {
     flex: 3;
+    padding: 10px 120px;
 }
