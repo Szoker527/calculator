@@ -15,19 +15,25 @@ body {
     width: 400px;
     height: 100px;
     border: solid;
-}
-
-#display-input,
-#display-show {
-    flex: 1;
-}
-
-#display-input input {
-    flex: 1;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+    background-color:#282828;
     border: none;
-    background-color: #979ba0;
-    resize: none;
-    outline: none;
+}
+
+#display-input {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+#displaynumbers {
+    background-color: green;
+    margin-top: 25px;
+    height: 54px;
+    width: 322px;
+    border-radius: 10px;
 }
 
 #operators {
@@ -35,13 +41,25 @@ body {
     width: 400px;
     height: 100px;
     border: solid;
-    border-top: none;
-    border-bottom: none;
-    background-color: #1F2937;
+    border: none;
+    background-color:#282828;
+}
+
+#operatorbox {
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 #operators div {
-    padding: 18px 6px;
+    padding: 10px 5px;
+}
+
+#operators button{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    background-color:black;
 }
 
 #container {
@@ -50,8 +68,11 @@ body {
     height: 400px;
     flex-direction: column;
     border: solid;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
     border-top: none;
-    background-color: #1F2937;
+    background-color:#282828;
+    border: none;
 }
 
 #top-side,
@@ -59,7 +80,6 @@ body {
 #rightBox,
 #btnBox,
 #rightBox,
-#display-input,
 #rightBox div,
 #operators div,
 #bottom-side div,
@@ -93,15 +113,19 @@ body {
 .roundBorder {
     margin: 3px;
 }
-
+#container button {
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+    background-color: grey;
+}
 button {
-    background-color:  #f9faf8;
     border: 2px solid black;
     flex: 1;
 }
 
 button:hover {
-    border-color: #3882F6;
+    border-color: orange;
 }
 
 
