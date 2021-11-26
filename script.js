@@ -36,9 +36,21 @@ function operator() {
     }
 }
 
-function inputNumbers() {
-    document.getElementById("displaynumbers").innerText = "Paragraph changed!";
+const keys = document.querySelectorAll("#btnBox button");
+
+const keyClear = document.getElementById("clearAC");
+
+keyClear.addEventListener("click", clearInput);
+
+keys.forEach(key => key.addEventListener("click", inputNumbers))
+
+function inputNumbers(e) {
+    const choice = e.target.id;
+    const display = document.querySelector("#shownumbers");
+    display.textContent += choice;
 }
 
-
-console.log(inputNumbers());
+function clearInput() {
+    const display = document.querySelector("#shownumbers");
+    display.textContent = "0";
+}

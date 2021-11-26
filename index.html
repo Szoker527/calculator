@@ -6,12 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator project</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" deter></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div id="display">
         <div id="display-input">
-            <div id="displaynumbers">""<span id="printNumber"></span></div>
+            <div id="displaynumbers">
+                <div id="shownumbers"  class="numberstyle">0</div>
+            </div>
+        </div>
+    </div>
+    <div id="clearbtn">
+        <div id="clearbtnBox">
+            <div>
+                <button id="clearAC">AC</button>
+            </div>
+            <div>
+                <button>C</button>
+            </div>
         </div>
     </div>
     <div id="operators">
@@ -37,19 +49,19 @@
         <div id="top-side">
             <div id="btnBox">
                 <div>
-                    <button class="roundBorder">7</button>
-                    <button class="roundBorder">8</button>
-                    <button class="roundBorder">9</button>
+                    <button id="7" class="roundBorder">7</button>
+                    <button id="8" class="roundBorder">8</button>
+                    <button id="9" class="roundBorder">9</button>
                 </div>
                 <div>
-                    <button class="roundBorder">4</button>
-                    <button class="roundBorder"> 5</button>
-                    <button class="roundBorder">6</button>
+                    <button id="4" class="roundBorder">4</button>
+                    <button id="5" class="roundBorder">5</button>
+                    <button id="6" class="roundBorder">6</button>
                 </div>
                 <div>
-                    <button class="roundBorder">1</button>
-                    <button class="roundBorder">2</button>
-                    <button class="roundBorder">3</button>
+                    <button id="1" class="roundBorder">1</button>
+                    <button id="2" class="roundBorder">2</button>
+                    <button id="3" class="roundBorder">3</button>
                 </div>
             </div>
         </div>

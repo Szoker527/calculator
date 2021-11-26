@@ -7,6 +7,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    /* background-image: url("images/wood.jpg"); */
+    background-color: #DCD9CD;
 }
 
 #display {
@@ -34,6 +36,35 @@ body {
     height: 54px;
     width: 322px;
     border-radius: 10px;
+}
+
+.numberstyle {
+    text-align: center;
+    font-size: 40px;
+    padding-top: 3px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+#clearbtn {
+    display: flex;
+    width: 400px;
+    height: 50PX;
+    border: solid;
+    border: none;
+    background-color:#282828;
+}
+
+#clearbtn button{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    background-color:black;
+}
+
+#clearbtn div {
+    padding: 3px 10px;
 }
 
 #operators {
@@ -81,6 +112,7 @@ body {
 #btnBox,
 #rightBox,
 #rightBox div,
+#clearbtn div,
 #operators div,
 #bottom-side div,
 #btnBox div  {
