@@ -36,4 +36,9 @@ function operator() {
     }
 }
 
+function inputNumbers() {
+    document.getElementById("displaynumbers").innerText = "Paragraph changed!";
+}
 
+
+console.log(inputNumbers());
