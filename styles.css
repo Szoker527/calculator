@@ -56,10 +56,9 @@ body {
     text-align: center;
     font-size: 40px;
     padding-top: 3px;
-    text-align: right;
-    margin-right: 10px;
+    text-align: left;
+    margin-left: 10px;
     overflow: hidden;
-    direction: rtl;
 }
 
 #clearbtn {
