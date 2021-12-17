@@ -11,9 +11,8 @@ let adds = "+";
 let subtracts = "-";
 let multiplys = "*";
 let divides = "/";
-let choice;
-let disNum = {};
-
+let userInput = {};
+// let userInput.choice;
 
 keyClear.addEventListener("click", clearInput);
 keys.forEach(key => key.addEventListener("click", inputNumbers));
@@ -23,74 +22,55 @@ addKeys.addEventListener("click", numberOne);
 
 subKeys.addEventListener("click", numberOne);
 
-multKeys.addEventListener("click", futureEqual);
 multKeys.addEventListener("click", numberOne);
 
-divKey.addEventListener("click", futureEqual);
 divKey.addEventListener("click", numberOne);
 
 equalKey.addEventListener("click", finalEqual);
 
 
 function add(a, b){
-    if (disNum.finalScore == undefined) {
-        disNum.finalScore  =  a + b;
-    }
-    else if (!isNaN(disNum.finalScore)){
-        disNum.finalScore  = a + disNum.finalScore;
-    }
-    delete disNum.fNum;
-    delete disNum.sNum;
-    return disNum.finalScore;
+    let finalNumber = a + b;
+    userInput.fNum = finalNumber;
+    userInput.sNum = b;
+    display.textContent = userInput.fNum;
+    display.textContent = String(display.textContent).substr(0, 12);
+    return a + b;
 
 }
 
 function subtract(a, b) {
-    if (disNum.finalScore == undefined) {
-        disNum.finalScore  =  a - b;
-    }
-    else if (!isNaN(disNum.finalScore)){
-        disNum.finalScore  = a - disNum.finalScore;
-    }
-    delete disNum.fNum;
-    delete disNum.sNum;
-    return disNum.finalScore;
+    let finalNumber = a - b;
+    userInput.fNum = finalNumber;
+    userInput.sNum = b;
+    display.textContent = userInput.fNum;
+    display.textContent = String(display.textContent).substr(0, 12);
+    return a + b;
 }
 
 function multiply(a, b) {
-    disNum.score = a * b;
-    display.textContent = disNum.score;
+    let finalNumber = a * b;
+    userInput.fNum = finalNumber;
+    userInput.sNum = b;
+    display.textContent = userInput.fNum;
     display.textContent = String(display.textContent).substr(0, 12);
-    return disNum.score;
+    return a + b;
 }
 
 function divide(a, b) {
-    disNum.score = a / b;
-    display.textContent = disNum.score;
+    let finalNumber = a / b;
+    userInput.fNum = finalNumber;
+    userInput.sNum = b;
+    display.textContent = userInput.fNum;
     display.textContent = String(display.textContent).substr(0, 12);
-    return disNum.score;
+    return a + b;
 }
 
-function operator(choice) {
-    let a;
-    let b;
-    if (disNum.sNum == undefined && !isNaN(disNum.fNum)) {
-        disNum.sNum = +display.innerText;
-        a = disNum.fNum;
-        b = disNum.sNum;
-    }
-    else if (!isNaN(disNum.sNum) && !isNaN(disNum.fNum)) {
-        a = disNum.fNum;
-        b = disNum.sNum;
-    }
-    else {
-        disNum.fNum = +display.innerText;
-        a = disNum.fNum;
-        b = disNum.finalScore;
-    }
+function operator(choice, a, b) {
     if (choice == "add") {
         console.log(a,b);
         add(a, b);
+        userInput.fNum;
     }
     else if(choice == "subtract") {
         console.log(a,b);
@@ -99,23 +79,17 @@ function operator(choice) {
     else if(choice == "multiply"){
         console.log(a,b);
         multiply(+a, +b);
-        disNum.finalScore = +display.textContent;
+        userInput.finalScore = +display.textContent;
     }
     else if(choice == "divide"){
         console.log(a,b);
         divide(+a, +b);
-        disNum.finalScore = +display.textContent;
+        userInput.finalScore = +display.textContent;
     }
-}
-addKeys.addEventListener("click", futureEqual);
-subKeys.addEventListener("click", futureEqual);
-
-function futureEqual(e){
-    choice = e.target.id;
 }
 
 function inputNumbers(e) {
-    const choice = e.target.id;
+    let choice = e.target.id;
     const display = document.querySelector("#shownumbers");
     display.textContent = String(display.textContent).substr(0, 12);
     if (display.textContent == 0 || display.textContent == "+" || display.textContent == "-" ||
@@ -129,29 +103,39 @@ function inputNumbers(e) {
 
 function clearInput() {
     const display = document.querySelector("#shownumbers");
-    delete disNum.fNum;
-    delete disNum.sNum;
-    delete disNum.finalScore;
+    delete userInput.fNum;
+    delete userInput.sNum;
     display.textContent = "0";
 }
 
 function numberOne(e) {
-    isNumber();
-    showChoice(choice)
-    console.log(disNum.fNum); console.log(disNum.sNum); console.log(disNum.finalScore);
+    if(!isNaN(userInput.fNum) && userInput.sNum == undefined) {
+        userInput.sNum = +display.innerText;
+        operator(userInput.choice, userInput.fNum, userInput.sNum);
+        userInput.choice = e.target.id;
+        showChoice(userInput.choice);
+    }
+    else if(!isNaN(userInput.fNum) && !isNaN(userInput.sNum)) {
+        userInput.sNum = +display.innerText;
+        operator(userInput.choice, userInput.fNum, userInput.sNum);
+        userInput.choice = e.target.id;
+        showChoice(userInput.choice);
+    }
+    else {
+        userInput.choice = e.target.id;
+        isNumber();
+        showChoice(userInput.choice);
+    }
+    console.log(userInput.fNum); console.log(userInput.sNum);
 }
 
 function isNumber() {
-    if(!isNaN(disNum.fNum)) {
-        disNum.sNum = +display.innerText;
-        operator(choice);
-    }
-    else if(!isNaN(disNum.finalScore)) {
-        disNum.fNum = +display.innerText;
-        operator(choice);
+    if(!isNaN(userInput.fNum)) {
+        userInput.sNum = +display.innerText;
+        operator(userInput.choice, userInput.fNum, userInput.sNum);
     }
     else {
-        disNum.fNum = +display.innerText;
+        userInput.fNum = +display.innerText;
     }
 }
 
@@ -170,14 +154,15 @@ function showChoice(choice) {
 
 
 function finalEqual() {
-    if (choice === undefined){
+    if (userInput.choice === undefined){
         display.innerText = "0";
     }
     else {
-        operator(choice);
-        display.textContent = disNum.finalScore;
+        userInput.sNum = +display.textContent;
+        operator(userInput.choice, userInput.fNum, userInput.sNum);
+        display.textContent = userInput.fNum;
         display.textContent = String(display.textContent).substr(0, 12);
     }
-    console.log(disNum.fNum); console.log(disNum.sNum);
+    console.log(userInput.fNum); console.log(userInput.sNum);
 }
 
