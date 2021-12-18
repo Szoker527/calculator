@@ -115,6 +115,12 @@ function numberOne(e) {
         userInput.choice = e.target.id;
         showChoice(userInput.choice);
     }
+    else if (display.textContent == 0 || display.textContent == "+" || display.textContent == "-" ||
+    display.textContent == "*" || display.textContent == "/") {
+        operator(userInput.choice, userInput.fNum, userInput.sNum);
+        userInput.choice = e.target.id;
+        showChoice(userInput.choice);
+    }
     else if(!isNaN(userInput.fNum) && !isNaN(userInput.sNum)) {
         userInput.sNum = +display.innerText;
         operator(userInput.choice, userInput.fNum, userInput.sNum);
@@ -157,9 +163,14 @@ function finalEqual() {
     if (userInput.choice === undefined){
         display.innerText = "0";
     }
+    else if(!isNaN(userInput.finNum)) {
+        display.textContent = userInput.fNum;
+        display.textContent = String(display.textContent).substr(0, 12);
+    }
     else {
         userInput.sNum = +display.textContent;
         operator(userInput.choice, userInput.fNum, userInput.sNum);
+        userInput.finNum = userInput.fNum;
         display.textContent = userInput.fNum;
         display.textContent = String(display.textContent).substr(0, 12);
     }
