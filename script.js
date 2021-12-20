@@ -11,6 +11,7 @@ let adds = "+";
 let subtracts = "-";
 let multiplys = "*";
 let divides = "/";
+let equalNum = true;
 let choice;
 const adding = (previousValue, currentValue) => previousValue + currentValue;
 const subtracting = (previousValue, currentValue) => previousValue - currentValue;
@@ -42,7 +43,6 @@ function add(){
     display.textContent = finalnumber;
     userInput.array1[0] = finalnumber;
     userInput.array1.splice(1);
-    console.log(userInput.array1);
 }
 
 function subtract() {
@@ -50,7 +50,6 @@ function subtract() {
     display.textContent = finalnumber;
     userInput.array1[0] = finalnumber;
     userInput.array1.splice(1);
-    console.log(userInput.array1);
 }
 
 function multiply() {
@@ -58,7 +57,6 @@ function multiply() {
     display.textContent = finalnumber;
     userInput.array1[0] = finalnumber;
     userInput.array1.splice(1);
-    console.log(userInput.array1);
 }
 
 function divide() {
@@ -66,7 +64,6 @@ function divide() {
     display.textContent = finalnumber;
     userInput.array1[0] = finalnumber;
     userInput.array1.splice(1);
-    console.log(userInput.array1);
 }
 
 function operator(choice) {
@@ -89,9 +86,9 @@ function inputNumbers(e) {
     let choice = e.target.id;
     const display = document.querySelector("#shownumbers");
     display.textContent = String(display.textContent).substr(0, 12);
-    if (display.textContent == 0 || display.textContent == "+" || display.textContent == "-" ||
-    display.textContent == "*" || display.textContent == "/"){
+    if (display.textContent == 0 || display.textContent == userInput.array1[0] || equalNum == false){
         display.textContent = choice;
+        equalNum = true;
     }
     else {
         display.textContent += choice;
@@ -100,45 +97,34 @@ function inputNumbers(e) {
 
 function clearInput() {
     const display = document.querySelector("#shownumbers");
-    delete userInput.fNum;
-    delete userInput.sNum;
+    userInput.array1.splice(0);
     display.textContent = "0";
 }
 
 function operatorIn(e) {
-    choice = e.target.id;
-    if (userInput.array1.length > 1) {
+    if(userInput.array1.length == 1){
+        equalNum = true;
+        userInput.array1.push(+display.textContent);
         operator(choice);
-    }
-    else if(userInput.array1.length == 1){
-        
+        choice = e.target.id;
     }
     else {
+        choice = e.target.id;
         userInput.array1.push(+display.textContent);
-        showChoice(choice);
-    }
-    console.log(userInput.array1); console.log(userInput.array1);
-}
-
-
-
-function showChoice(choice) {
-    switch (choice) {
-        case "add":
-           return display.textContent = adds;
-        case "subtract":
-            return display.textContent = subtracts;
-        case "multiply":
-            return display.textContent = multiplys;
-        case "divide":
-            return display.textContent = divides;
     }
 }
 
 function finalEqual() {
-    userInput.array1.push(+display.textContent);
-    operator(choice);
+    if (equalNum == false) {
+        display.textContent;
+        userInput.array1.splice(0);
+    }
+    else {
+        userInput.array1.push(+display.textContent);
+        operator(choice);
+        equalNum = false;
+        userInput.array1.splice(0);
+    }
     display.textContent = String(display.textContent).substr(0, 12);
-    console.log(userInput.fNum); console.log(userInput.sNum);
 }
 
